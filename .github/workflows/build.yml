@@ -1,3 +1,38 @@
+Skip to content
+Navigation Menu
+Companyboo
+O-
+
+Type / to search
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+3 days left to try out Enterprise, GitHub Advanced Security and Copilot features.
+Go to dashboard
+Talk to us
+O-/.github/workflows
+/build.yml
+Go to file
+t
+Bouteillepleine
+Bouteillepleine
+build.yml
+e72c0ab
+ · 
+25 minutes ago
+O-/.github/workflows
+/build.yml
+
+Code
+
+Blame
+381 lines (320 loc) · 18.7 KB
 name: Build
 permissions:
   contents: write  # Allow writing to repository contents (for pushing tags)
@@ -379,3 +414,8 @@ jobs:
           name: kernel-${{ env.CONFIG }}
           path: |
             *.zip
+O-/.github/workflows/build.yml at Test-bbr · Companyboo/O-
+Memo
+Highlight
+Explain
+ 
