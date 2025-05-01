@@ -361,8 +361,3 @@ jobs:
           name: kernel-${{ env.CONFIG }}
           path: |
             *.zip
-O-/.github/workflows/build.yml at Test-bbr · Companyboo/O-
-Memo
-Highlight
-Explain
- 
