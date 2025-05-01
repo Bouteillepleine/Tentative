@@ -1,38 +1,3 @@
-Skip to content
-Navigation Menu
-Companyboo
-O-
-
-Type / to search
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-3 days left to try out Enterprise, GitHub Advanced Security and Copilot features.
-Go to dashboard
-Talk to us
-O-/.github/workflows
-/build.yml
-Go to file
-t
-Bouteillepleine
-Bouteillepleine
-build.yml
-e72c0ab
- · 
-25 minutes ago
-O-/.github/workflows
-/build.yml
-
-Code
-
-Blame
-381 lines (320 loc) · 18.7 KB
 name: Build
 permissions:
   contents: write  # Allow writing to repository contents (for pushing tags)
@@ -173,7 +138,7 @@ jobs:
           echo "KSUVER=$KSU_VERSION" >> $GITHUB_ENV
           sed -i "s/DKSU_VERSION=11998/DKSU_VERSION=${KSU_VERSION}/" Makefile
 
-     - name: Apply SUSFS Patches
+      - name: Apply SUSFS Patches
         run: |
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG/kernel_platform"
