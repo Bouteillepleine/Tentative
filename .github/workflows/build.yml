@@ -214,9 +214,12 @@ jobs:
           # ── Additional Netfilter Options ──
           echo "CONFIG_WIREGUARD=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_IP_NF_NAT=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_NF_CONNTRACK=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_IP_NF_TARGET_TTL=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_IP6_NF_TARGET_HL=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_IP6_NF_MATCH_HL=y" >> ./common/arch/arm64/configs/gki_defconfig
+          
+          echo "CONFIG_NF_NAT=y" >> ./common/arch/arm64/configs/gki_defconfig
 
           # ── MultiCore Options ──
           echo "CONFIG_RPS=y" >> ./common/arch/arm64/configs/gki_defconfig
@@ -249,17 +252,12 @@ jobs:
           echo "CONFIG_NET_QOS=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_NET_SCH_FQ=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_DEFAULT_FQ=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo 'CONFIG_DEFAULT_NET_SCH="fq"' >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_SCH_FQ=y" >> ./common/arch/arm64/configs/gki_defconfig      
+          echo "CONFIG_DEFAULT_NET_SCH="fq"" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_NET_SCH_HTB=n" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_SCH_PRIO=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_SCH_SFQ=n" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_SCH_TBF=n" >> ./common/arch/arm64/configs/gki_defconfig
-
+                    
           # ── Wi-Fi and QoS for VoWiFi ── 
-          echo "CONFIG_WLAN=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_QCOM_WLAN=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_WLAN_QCOM_WMM=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_INET_IPSEC=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_XFRM_USER=y" >> ./common/arch/arm64/configs/gki_defconfig
  
           # ── ECN config setting ──
           echo "CONFIG_IP_NF_TARGET_ECN=y" >> ./common/arch/arm64/configs/gki_defconfig
