@@ -125,16 +125,18 @@ jobs:
           git remote add google-bbr https://github.com/google/bbr.git
           git fetch google-bbr v3 --depth=1
 
-          # Check if the file exists in the repository
-          FILE_PATH="net/ipv4/tcp_bbr.c"
-          if git ls-remote google-bbr | grep -q "$FILE_PATH"; then
-          echo "File exists. Proceeding to fetch and merge..."
-          git checkout google-bbr/v3 -- $FILE_PATH
-          git add $FILE_PATH
+          # Check if the file exists before attempting to add and commit
+          if git ls-remote --exit-code --heads https://github.com/google/bbr v3 &>/dev/null; then
+          if git fetch https://github.com/google/bbr v3 && git checkout FETCH_HEAD -- net/ipv4/tcp_bbr.c; then
+          echo "Successfully fetched and merged tcp_bbr.c into the kernel source."
+          git add net/ipv4/tcp_bbr.c
           git commit -m "Merge tcp_bbr.c from Google BBR v3 into kernel"
-          echo "Successfully merged tcp_bbr.c into the kernel source."
           else
-          echo "Error: File '$FILE_PATH' does not exist in the branch 'v3' of the Google BBR repository."
+          echo "Error: File 'net/ipv4/tcp_bbr.c' does not exist in the branch 'v3' of the Google BBR repository."
+          exit 1
+          fi
+          else
+          echo "Error: Branch 'v3' does not exist in the Google BBR repository."
           exit 1
           fi
           
