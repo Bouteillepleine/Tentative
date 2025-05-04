@@ -113,15 +113,23 @@ jobs:
           $REPO --version
           $REPO --trace sync -c --no-clone-bundle --no-tags --optimized-fetch -j$(nproc --all) --fail-fast
 
-      - name: Merge BBR v3 into Kernel Source       
+      - name: Merge tcp_bbr.c from Google BBR
         run: |
-          cd "$CONFIG/kernel_platform"
+          echo "Fetching and merging tcp_bbr.c from Google BBR repository..."
+          cd "$CONFIG/kernel_platform"          
+          # Configure Git for merging
           git config --global user.email "q543069760@gmail.com"
           git config --global user.name "Build"
+          
+          # Add the Google BBR repository as a remote
           git remote add google-bbr https://github.com/google/bbr.git
-          git fetch google-bbr v3
-          git show-ref --verify --quiet refs/remotes/google-bbr/v3 || { echo "Error: google-bbr/v3 branch not found"; exit 1; }
-          git merge google-bbr/v3 --allow-unrelated-histories -m "Merge BBR v3 into kernel"
+          git fetch google-bbr v3 --depth=1          
+          # Cherry-pick or merge only the tcp_bbr.c file
+          git checkout google-bbr/v3 -- net/ipv4/tcp_bbr.c          
+          # Add the file to the current branch and commit the changes
+          git add net/ipv4/tcp_bbr.c
+          git commit -m "Merge tcp_bbr.c from Google BBR v3 into kernel"          
+          echo "Successfully merged tcp_bbr.c into the kernel source."
           sed -i 's/^\([[:space:]]*\)\.name[[:space:]]*=[[:space:]]*"bbr",/\1.name = "bbr3",/' ./common/net/ipv4/tcp_bbr.c
       
       - name: Add KernelSU
