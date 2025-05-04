@@ -206,39 +206,8 @@ jobs:
           echo "CONFIG_IP_NF_NAT=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_IP_NF_TARGET_TTL=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_IP6_NF_TARGET_HL=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_IP6_NF_MATCH_HL=y" >> ./common/arch/arm64/configs/gki_defconfig
-
-          # ── MultiCore Options ──
-          echo "CONFIG_RPS=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_RFS=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_RX_BUSY_POLL=y" >> ./common/arch/arm64/configs/gki_defconfig
-
-          # ── Add BBR and FQ config settings ──
-          echo "CONFIG_TCP_CONG_ADVANCED=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_TCP_CONG_BBR=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_DEFAULT_CUBIC=n" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_DEFAULT_BBR=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_DEFAULT_TCP_CONG=\"bbr\"" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_SCH_DEFAULT=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_DEFAULT_FQ=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_DEFAULT_NET_SCH=\"fq\"" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_SCH_FQ_CODEL=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_TCP_CONG_CDG=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_TCP_PACING=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_SCH_HTB=n" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_SCH_MQPRIO=y" >> ./common/arch/arm64/configs/gki_defconfig
-
-          # ── cellular/WiFi ──
-          echo "CONFIG_NET_SCH_CAKE=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_NET_PKTGEN=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_TCP_MD5SIG=y" >> ./common/arch/arm64/configs/gki_defconfig
-
-          # ── ECN config setting ──
-          echo "CONFIG_IP_NF_TARGET_ECN=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_IP_ECN=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_TCP_ECN=y" >> ./common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_IPV6_ECN=y" >> ./common/arch/arm64/configs/gki_defconfig
-
+          echo "CONFIG_IP6_NF_MATCH_HL=y" >> ./common/arch/arm64/configs/gki_defconfig      
+          
            # ── Strip debug to reduce size ──
           echo "CONFIG_DEBUG_KERNEL=n" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_DYNAMIC_DEBUG=n" >> ./common/arch/arm64/configs/gki_defconfig
